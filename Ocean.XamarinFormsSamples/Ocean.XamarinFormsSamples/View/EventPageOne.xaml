@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Ocean.XamarinFormsSamples.View.EventPageOne"
+    Title="Event Sign Up (step one)">
+
+    <ScrollView>
+
+        <StackLayout
+            Orientation="Vertical">
+
+            <Label
+                Margin="5,10,5,5"
+                Style="{StaticResource DirectionsStyle}"
+                Text="This form demonstrates one technique for partially validating an object.  Only the properties on this form will be validated, the remaining will be validated on the subsequent pages." />
+
+            <Label
+                Margin="5,5,5,20"
+                Style="{StaticResource DirectionsStyle}"
+                Text="This is accomplished by using Rule Sets on the entity object property validation rules and by setting the Active Rule Set on the entity and checking the rules." />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="85" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="Date" />
+                <DatePicker
+                    Date="{Binding Path=EventSignUp.EventDate, Mode=TwoWay, StringFormat='D'}"
+                    Format="D"
+                    Grid.Column="1" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding Path=EventSignUp[EventDate]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=EventSignUp.IsDirty}" />
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="85" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="Title" />
+                <Entry
+                    Text="{Binding Path=EventSignUp.Title, Mode=TwoWay}"
+                    Grid.Column="1" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding Path=EventSignUp[Title]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=EventSignUp.IsDirty}" />
+            </Grid>
+
+            <Button
+                Command="{Binding Path=SaveOnlyWhenFormValidCommand}"
+                Text="Next" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

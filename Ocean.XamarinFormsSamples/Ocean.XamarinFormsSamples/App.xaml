@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<prism:PrismApplication
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+    x:Class="Ocean.XamarinFormsSamples.App">
+
+    <prism:PrismApplication.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+            </Style>
+            
+            <Style x:Key="MenuButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Navy" />
+                <Setter Property="BackgroundColor" Value="#FF8DCBCB"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="20"/>
+            </Style>
+
+            <Style x:Key="TitleLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Navy" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,20,0,0"/>
+            </Style>
+
+            <OnPlatform
+                x:Key="ErrorLabelSize"
+                x:TypeArguments="Font"
+                iOS="12"
+                Android="12"
+                WinPhone="14" />
+            <Style x:Key="ErrorLabelStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="Red" />
+                <Setter Property="Margin"
+                        Value="5,0,0,0" />
+                <Setter
+                    Property="Font"
+                    Value="{DynamicResource ErrorLabelSize}" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Style.Triggers>
+                    <Trigger TargetType="Label" Property="Text" Value="">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <OnPlatform
+                x:Key="SizedLabelSize"
+                x:TypeArguments="Font"
+                iOS="12"
+                Android="14"
+                WinPhone="Medium" />
+            <Style
+                x:Key="DirectionsStyle"
+                TargetType="Label">
+                <Setter
+                    Property="Font"
+                    Value="{DynamicResource SizedLabelSize}" />
+            </Style>
+        </ResourceDictionary>
+    </prism:PrismApplication.Resources>
+
+</prism:PrismApplication>

@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Ocean.XamarinFormsSamples.View.ValidationDemoTwoPage"
+    Title="Edit Customer User w/Validation">
+
+    <ScrollView>
+        <StackLayout Orientation="Vertical" Spacing="5">
+
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <Label Text="Id" />
+                <Label Grid.Column="1"
+                       Text="{Binding Path=Customer.Id}" />
+                <Label Grid.Column="1"
+                       Grid.Row="1"
+                       Text="{Binding Path=Customer[Id]}"
+                       Style="{StaticResource ErrorLabelStyle}"
+                       IsVisible="{Binding Path=Customer.IsDirty}" />
+
+                <Image
+                    Grid.Row="2"
+                    Source="user.png" />
+                <Entry
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Text="{Binding Path=Customer.UserName, Mode=TwoWay}"
+                    Placeholder="User Name" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Text="{Binding Path=Customer[UserName]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=Customer.IsDirty}" />
+
+                <Image
+                    Grid.Row="4"
+                    Source="email.png" />
+                <Entry
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Text="{Binding Path=Customer.Email, Mode=TwoWay}"
+                    Placeholder="Email"
+                    Keyboard="Email" />
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Text="{Binding Path=Customer[Email]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=Customer.IsDirty}" />
+
+                <Image
+                    Grid.Row="6"
+                    Source="password.png" />
+                <Entry
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Text="{Binding Path=Customer.Password, Mode=TwoWay}"
+                    Placeholder="Password"
+                    IsPassword="True" />
+                <Label
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Text="{Binding Path=Customer[Password]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=Customer.IsDirty}" />
+
+                <Entry
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    Text="{Binding Path=Customer.ComparePassword, Mode=TwoWay}"
+                    Placeholder="Compare Password"
+                    IsPassword="True" />
+                <Label
+                    Grid.Row="9"
+                    Grid.Column="1"
+                    Text="{Binding Path=Customer[ComparePassword]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=Customer.IsDirty}" />
+            </Grid>
+            
+            <Button Command="{Binding Path=SaveCommand}"
+                    Text="Save" />
+
+            <Button Command="{Binding Path=SaveOnlyWhenFormValidCommand}"
+                    Text="Save Only When Form Is Valid" />
+
+            <Button Command="{Binding Path=DeleteCommand}"
+                    Text="Delete"
+                    TextColor="Red" />
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Active Rule Set"
+                       FontAttributes="Bold" />
+                <Label Text="{Binding Path=Customer.ActiveRuleSet}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Is Dirty"
+                       FontAttributes="Bold" />
+                <Label Text="{Binding Path=Customer.IsDirty}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Is Valid"
+                       FontAttributes="Bold" />
+                <Label Text="{Binding Path=Customer.IsValid}" />
+            </StackLayout>
+
+            <Label Text="Validation Errors"
+                   FontAttributes="Bold" />
+            <Label Text="{Binding Path=Customer.Error, Mode=OneWay}"
+                   IsVisible="{Binding Path=Customer.IsDirty}"
+                   Style="{StaticResource ErrorLabelStyle}" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

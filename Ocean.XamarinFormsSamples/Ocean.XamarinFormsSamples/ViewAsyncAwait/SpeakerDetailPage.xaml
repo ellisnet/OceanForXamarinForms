@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Ocean.XamarinFormsSamples.ViewAsyncAwait.SpeakerDetailPage"
+    Title="{Binding Path=Speaker.Name}">
+    <ScrollView
+        Padding="10">
+        <StackLayout
+            Spacing="10">
+            <Image
+                Source="{Binding Path=Speaker.Avatar}"
+                HeightRequest="200"
+                WidthRequest="200" />
+
+            <Label
+                Text="{Binding Path=Speaker.Name}"
+                FontSize="24" />
+            <Label
+                Text="{Binding Path=Speaker.Title}"
+                TextColor="Purple" />
+            <Label
+                Text="{Binding Path=Speaker.Description}" />
+
+            <Button
+                Text="Speak"
+                Command="{Binding Path=SpeakTextCommand}" />
+            <Button
+                Text="Go to Website"
+                Command="{Binding Path=GoToWebSiteCommand}" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

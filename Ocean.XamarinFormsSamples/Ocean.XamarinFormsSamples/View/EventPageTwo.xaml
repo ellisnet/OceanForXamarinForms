@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Ocean.XamarinFormsSamples.View.EventPageTwo"
+    Title="Event Sign Up (step two)">
+
+    <ScrollView>
+
+
+        <StackLayout
+            Orientation="Vertical">
+
+            <Label
+                     Margin="5,10,5,5"
+                     Style="{StaticResource DirectionsStyle}"
+                     Text="The hardware back button is disabled to simplify this demonstration and keep the concept count down." />
+
+            <Label
+                Margin="5,5,5,20"
+                Style="{StaticResource DirectionsStyle}"
+                Text="The current release of Prism does not handle the back button and the views are not notified when navigated back to.  This is a future feature." />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="85" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="First Name" />
+                <Entry
+                    Text="{Binding Path=EventSignUp.FirstName, Mode=TwoWay}"
+                    Grid.Column="1"
+                    Placeholder="First Name" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding Path=EventSignUp[FirstName]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=EventSignUp.IsDirty}" />
+
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="85" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="Last Name" />
+                <Entry
+                    Text="{Binding Path=EventSignUp.LastName, Mode=TwoWay}"
+                    Grid.Column="1"
+                    Placeholder="Last Name" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding Path=EventSignUp[LastName]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=EventSignUp.IsDirty}" />
+
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="85" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Text="Email" />
+                <Entry
+                    Text="{Binding Path=EventSignUp.Email, Mode=TwoWay}"
+                    Grid.Column="1"
+                    Placeholder="Email"
+                    Keyboard="Email" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding Path=EventSignUp[Email]}"
+                    Style="{StaticResource ErrorLabelStyle}"
+                    IsVisible="{Binding Path=EventSignUp.IsDirty}" />
+
+            </Grid>
+
+            <Button
+                Command="{Binding Path=SaveOnlyWhenFormValidCommand}"
+                Text="Save" />            
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

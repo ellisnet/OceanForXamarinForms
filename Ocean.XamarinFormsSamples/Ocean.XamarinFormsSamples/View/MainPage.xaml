@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    BackgroundColor="#FF8ED3FC"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xamarinFormsSamples="clr-namespace:Ocean.XamarinFormsSamples;assembly=Ocean.XamarinFormsSamples"
+    x:Class="Ocean.XamarinFormsSamples.View.MainPage"
+    Title="Xamarin Forms for Line Of Business">
+    
+    <ScrollView>
+        <StackLayout
+            Spacing="15">
+
+            <Label
+                Text="Ocean for Xamarin Forms"
+                Style="{StaticResource TitleLabelStyle}" />
+
+            <Button
+                Style="{StaticResource MenuButtonStyle}"
+                Text="Speakers"
+                CommandParameter="{x:Static xamarinFormsSamples:Constants.SpeakerMasterPage}"
+                Command="{Binding Path=NavigateToUriCommand}" />
+
+            <Button
+                Style="{StaticResource MenuButtonStyle}"
+                Text="Add Customer w/Validation"
+                CommandParameter="{x:Static xamarinFormsSamples:Constants.ValidationDemoOnePage}"
+                Command="{Binding Path=NavigateToUriCommand}" />
+
+            <Button
+                Style="{StaticResource MenuButtonStyle}"
+                Text="Edit Customer w/Validation"
+                CommandParameter="{x:Static xamarinFormsSamples:Constants.ValidationDemoTwoPage}"
+                Command="{Binding Path=NavigateToUriCommand}" />
+
+            <Button
+                Style="{StaticResource MenuButtonStyle}"
+                Text="Multi Page Form"
+                CommandParameter="{x:Static xamarinFormsSamples:Constants.EventPageOne}"
+                Command="{Binding Path=NavigateToUriCommand}" />
+
+            <Button
+                Style="{StaticResource MenuButtonStyle}"
+                Text="Async Await Speakers"
+                CommandParameter="{x:Static xamarinFormsSamples:Constants.AsyncAwaitSpeakerMasterPage}"
+                Command="{Binding Path=NavigateToUriCommand}" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

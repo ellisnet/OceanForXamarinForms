@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Ocean.XamarinFormsSamples.ViewAsyncAwait.SpeakerMasterPage"
+    xmlns:controls="clr-namespace:Ocean.XamarinForms.Controls;assembly=Ocean.XamarinForms"
+    xmlns:behaviors="clr-namespace:Ocean.XamarinForms.Behaviors;assembly=Ocean.XamarinForms"
+    xmlns:converters="clr-namespace:Ocean.XamarinForms.Converters;assembly=Ocean.XamarinForms"
+    Title="Speakers">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SelectedItemEventArgsToSelectedItemConverter
+                x:Key="SelectedItemEventArgsToSelectedItemConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout
+        Spacing="0">
+
+        <Button
+            Text="Sync Speakers"
+            Command="{Binding Path=GetSpeakersCommand}" />
+        <ActivityIndicator
+            IsRunning="{Binding Path=IsBusy}"
+            IsVisible="{Binding Path=IsBusy}" />
+        <Label
+            Margin="5,10,5,5"
+            Style="{StaticResource DirectionsStyle}"
+            IsVisible="{Binding Path=SpeakersCollectionHasItems}"
+            Text="To test exception handling, select a speaker where the name begins with an 'M'" />
+        <Label
+            Margin="5,5,5,20"
+            Style="{StaticResource DirectionsStyle}"
+            IsVisible="{Binding Path=SpeakersCollectionHasItems}"
+            Text="To test exception handling after a navigation, select speaker where the name starts with Star." />
+
+        <ListView
+            x:Name="ListViewSpeakers"
+            SelectedItem="{Binding Path=SelectedSpeaker, Mode=TwoWay}"
+            ItemsSource="{Binding Path=Speakers}">
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior
+                    EventName="ItemSelected"
+                    Command="{Binding Path=SpeakerSelectedCommand}"
+                    Converter="{StaticResource SelectedItemEventArgsToSelectedItemConverter}" />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <controls:FastImageCell />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
